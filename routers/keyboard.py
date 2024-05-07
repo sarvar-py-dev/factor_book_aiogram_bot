@@ -31,3 +31,9 @@ def make_plus_minus(quantity, product_id):
     ikb.row(InlineKeyboardButton(text="◀️Orqaga", callback_data="categoryga"),
             InlineKeyboardButton(text='🛒 Savatga qo\'shish', callback_data="savatga" + product_id + str(quantity)))
     return ikb
+
+
+main_keyboard = ReplyKeyboardBuilder()
+main_keyboard.row(KeyboardButton(text='📚 Kitoblar'))
+main_keyboard.row(KeyboardButton(text='📃 Mening buyurtmalarim'))
+main_keyboard.row(KeyboardButton(text='🔵 Biz ijtimoyi tarmoqlarda'), KeyboardButton(text='📞 Biz bilan bog\'lanish'))

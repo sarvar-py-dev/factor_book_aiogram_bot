@@ -12,12 +12,13 @@ from routers.cons import database, ADMIN_LIST
 import routers.keyboard as kb
 from routers.filters import ChatTypeFilter
 from routers.keyboard import show_categories
-from filters import IsAdmin
+from routers.filters import IsAdmin
+from routers.utils import make_url
 
 save_product = {}
 
 admin_router = Router()
-admin_router.message.filter(ChatTypeFilter([ChatType.PRIVATE]))
+admin_router.message.filter(ChatTypeFilter([ChatType.PRIVATE]), IsAdmin())
 
 
 class FormState(StatesGroup):
@@ -127,7 +128,12 @@ async def add_product(message: Message, state: FSMContext):
 
 @admin_router.message(FormState.product_image)
 async def add_product(message: Message, state: FSMContext):
+    file = await message.bot.get_file(message.photo[-1].file_id)
+    img_byte = (await message.bot.download(file.file_id)).read()
+    url = await make_url(img_byte)
+
     save_product['image'] = message.photo[0].file_id
+    save_product['thumbnail_url'] = url
     await state.set_state(FormState.product_price)
     await message.answer('Product narxini kiriting: ')
 

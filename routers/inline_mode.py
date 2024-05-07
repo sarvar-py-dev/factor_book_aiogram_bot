@@ -1,48 +1,47 @@
-from aiogram import Router, html, F
-from aiogram.enums import ChatType
-from aiogram.filters import CommandStart
-from aiogram.types import Message, CallbackQuery, InputMediaPhoto, message, InlineQuery, InlineQueryResultArticle, \
-    InputTextMessageContent, InlineQueryResult
-from sqlalchemy.ext.asyncio import AsyncSession
+from mailbox import Message
 
-from database.orm_query import orm_get_categories, orm_get_category, orm_get_products, orm_get_product, orm_add_user, \
-    orm_add_to_cart, orm_get_user_cart, orm_clear_cart, orm_get_all_products, orm_get_all_products_by_startswith
-from filters import ChatTypeFilter
-from keyboards.inline_keyboards import get_inline_keyboard
-from keyboards.reply_keyboards import get_reply_keyboard
+from aiogram import Router, F
+from aiogram.types import InlineQuery, InlineQueryResultArticle, \
+    InputTextMessageContent
+
+from routers.cons import database
 
 inline_router = Router()
 
 
-@inline_router.shipping_query()
-async def user_inline_handler(inline_query: InlineQuery, session: AsyncSession) -> InlineQueryResult:
+@inline_router.inline_query()
+async def user_inline_handler(inline_query: InlineQuery):
     if inline_query.query == "":
-        products = await orm_get_all_products(session)
+        products = database['products']
         inline_list = []
-        for product in products[:50]:
+        for i, (product_k, product_v) in enumerate(products.items()):
             inline_list.append(InlineQueryResultArticle(
-                id=str(product.id),
-                title=product.nomi,
+                id=product_k,
+                title=product_v['name'],
                 input_message_content=InputTextMessageContent(
-                    message_text=product.nomi
+                    message_text=f"<i>{product_v['text'][2:]}</i>Buyurtma qilish uchun  : @facror_book_bot\n\nbook_id: {product_k}"
                 ),
-                thumbnail_url="https://telegra.ph/file/8006558d9ff33ced877d2.png",
-                description=str(product.narxi)
+                thumbnail_url=product_v['thumbnail_url'],
+                description=f"Factor Books\n💵 Narxi: {product_v['price']} so'm",
             ))
+            if i == 50:
+                break
 
         await inline_query.answer(inline_list)
     else:
-        products = await orm_get_all_products_by_startswith(session, inline_query.query)
+        products = {k: v for k, v in database['products'].items() if inline_query.query.lower() in v['name'].lower()}
         inline_list = []
-        for product in products[:50]:
+        for i, (product_k, product_v) in enumerate(products.items()):
             inline_list.append(InlineQueryResultArticle(
-                id=str(product.id),
-                title=product.nomi,
+                id=product_k,
+                title=product_v['name'],
                 input_message_content=InputTextMessageContent(
-                    message_text=product.nomi
+                    message_text=f"<i>{product_v['text'][2:]}</i>Buyurtma qilish uchun  : @facror_book_bot\n\nbook_id: {product_k}"
                 ),
-                thumbnail_url="https://telegra.ph/file/8006558d9ff33ced877d2.png",
-                description=str(product.narxi)
+                thumbnail_url=product_v['thumbnail_url'],
+                description=f"Factor Books\n💵 Narxi: {product_v['price']} so'm",
             ))
+            if i == 50:
+                break
 
         await inline_query.answer(inline_list)
