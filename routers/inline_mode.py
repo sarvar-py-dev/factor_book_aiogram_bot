@@ -1,6 +1,4 @@
-from mailbox import Message
-
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.types import InlineQuery, InlineQueryResultArticle, \
     InputTextMessageContent
 

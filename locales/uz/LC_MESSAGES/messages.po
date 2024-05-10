@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-06 16:47+0500\n"
-"PO-Revision-Date: 2024-05-06 16:47+0500\n"
+"POT-Creation-Date: 2024-05-10 11:38+0500\n"
+"PO-Revision-Date: 2024-05-09 18:41+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
 "Language-Team: uz <LL@li.org>\n"
@@ -18,36 +18,176 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: routers/handlers.py:23
-msgid "📚 Kitoblar"
+#: routers/basket.py:32 routers/handlers.py:72 routers/handlers.py:77
+msgid "Kategoriyalardan birini tanlang"
 msgstr ""
 
-#: routers/handlers.py:24
-msgid "📃 Mening buyurtmalarim"
+#: routers/basket.py:72
+msgid "Eng kamida 1 ta kitob buyurtma qilishingiz mumkin! 😊"
 msgstr ""
 
-#: routers/handlers.py:25 routers/handlers.py:42
-msgid "🔵 Biz ijtimoyi tarmoqlarda"
+#: routers/basket.py:84
+msgid "❌ Savatni tozalash"
 msgstr ""
 
-#: routers/handlers.py:25
-msgid "📞 Biz bilan bog'lanish"
+#: routers/basket.py:85
+msgid "✅ Buyurtmani tasdiqlash"
 msgstr ""
 
-#: routers/handlers.py:26
+#: routers/basket.py:86 routers/handlers.py:110
+msgid "◀️ orqaga"
+msgstr ""
+
+#: routers/handlers.py:18 routers/handlers.py:56
 msgid "Assalomu alaykum! Tanlang."
 msgstr ""
 
-#: routers/handlers.py:28
+#: routers/handlers.py:20
 msgid ""
 "Assalomu alaykum! \n"
 "Xush kelibsiz!"
 msgstr ""
 
-#: routers/handlers.py:37
+#: routers/handlers.py:29
 msgid ""
 "Buyruqlar:\n"
 "/start - Botni ishga tushirish\n"
 "/help - Yordam"
 msgstr ""
+
+#: routers/handlers.py:40
+msgid "Tilni tanlang: "
+msgstr ""
+
+#: routers/handlers.py:48
+msgid "Uzbek"
+msgstr ""
+
+#: routers/handlers.py:50
+msgid "Ingiliz"
+msgstr ""
+
+#: routers/handlers.py:52
+msgid "Kores"
+msgstr ""
+
+#: routers/handlers.py:87
+msgid ""
+"\n"
+"\n"
+"\n"
+"\n"
+"Telegram: @sarvar_py_dev\n"
+"\n"
+"📞  +{number}\n"
+"\n"
+"🤖 Bot Davranbekov Sarvarbek (@sarvar_py_dev) tomonidan tayorlandi.\n"
+msgstr ""
+
+#: routers/keyboard.py:21
+msgid "🔍 Qidirish"
+msgstr ""
+
+#: routers/keyboard.py:34
+msgid "◀️Orqaga"
+msgstr ""
+
+#: routers/keyboard.py:35
+msgid "🛒 Savatga qo'shish"
+msgstr ""
+
+#: routers/keyboard.py:41
+msgid "📚 Kitoblar"
+msgstr ""
+
+#: routers/keyboard.py:42
+msgid "📃 Mening buyurtmalarim"
+msgstr ""
+
+#: routers/keyboard.py:43
+msgid "🔵 Biz ijtimoyi tarmoqlarda"
+msgstr ""
+
+#: routers/keyboard.py:44
+msgid "📞 Biz bilan bog'lanish"
+msgstr ""
+
+#: routers/keyboard.py:45
+msgid "🌐 Tilni almshtirish"
+msgstr ""
+
+#: routers/order.py:50
+msgid "📞 Telefon raqam"
+msgstr ""
+
+#: routers/order.py:52
+msgid "Telefon raqamingizni qoldiring (📞 Telefon raqam tugmasini bosing)🔽:"
+msgstr ""
+
+#: routers/order.py:62 routers/order.py:91
+msgid "❌ Yo'q"
+msgstr ""
+
+#: routers/order.py:63 routers/order.py:95
+msgid "✅ Ha"
+msgstr ""
+
+#: routers/order.py:70
+msgid "❌ Bekor qilindi"
+msgstr ""
+
+#: routers/order.py:72
+msgid "Asosiy menyu"
+msgstr ""
+
+#: routers/order.py:104
+msgid ""
+"✅ Hurmatli mijoz! Buyurtmangiz uchun tashakkur.\n"
+"Buyurtma raqami: {orders_num}"
+msgstr ""
+
+#: routers/order.py:118
+msgid "<i>🎉 Sizning {order_num} raqamli buyurtmangizni admin qabul qildi.</i>"
+msgstr ""
+
+#: routers/order.py:130
+msgid "🤷‍♂️ Sizda hali buyurtmalar mavjud emas. Yoki bekor qilingan"
+msgstr ""
+
+#: routers/order.py:134
+msgid "❌ bekor qilish"
+msgstr ""
+
+#~ msgid "English language selected"
+#~ msgstr ""
+
+#~ msgid "영어가 선택되었습니다"
+#~ msgstr ""
+
+#~ msgid "IKAR | Factor Books"
+#~ msgstr ""
+
+#~ msgid "Factor Books"
+#~ msgstr ""
+
+#~ msgid "\"Factor Books\" nashiryoti"
+#~ msgstr ""
+
+#~ msgid "Uzbek tili tanlandi"
+#~ msgstr ""
+
+#~ msgid "Ingiliz tili tanlandi"
+#~ msgstr ""
+
+#~ msgid "Kores tili tanlandi"
+#~ msgstr ""
+
+#~ msgid "Botni boshlash"
+#~ msgstr ""
+
+#~ msgid "Yordam"
+#~ msgstr ""
+
+msgid "{lang} tili tanlandi"
+msgstr "{lang} tili tanlandi"
 

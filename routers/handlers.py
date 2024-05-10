@@ -1,28 +1,23 @@
-import requests
-from aiogram import F, Bot, Router
+from aiogram import F, Router
 from aiogram.enums import ParseMode
-from aiogram.filters import Command, CommandStart, Filter
+from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import StatesGroup, State
-from aiogram.types import InlineKeyboardButton, Message, CallbackQuery, KeyboardButton, ReplyKeyboardRemove, \
-    InlineQueryResultArticle, InlineQuery, InputTextMessageContent
-from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
-from aiogram.utils.i18n import gettext as _
+from aiogram.types import InlineKeyboardButton, Message, CallbackQuery
+from aiogram.utils.i18n import gettext as _, lazy_gettext as __
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-import routers.keyboard as kb
-
-from routers.cons import ADMIN_LIST, database
-from routers.keyboard import show_categories, make_plus_minus, main_keyboard
+from routers.cons import database
+from routers.keyboard import show_categories, make_plus_minus, main_keyboard_btn
 
 main_router = Router()
 
 
 @main_router.message(CommandStart())
 async def command_start_handler(message: Message) -> None:
-    rkb = main_keyboard
-    msg = 'Assalomu alaykum! Tanlang.'
+    rkb = main_keyboard_btn()
+    msg = _('Assalomu alaykum! Tanlang.')
     if str(message.from_user.id) not in database['users']:
-        msg = 'Assalomu alaykum! \nXush kelibsiz!'
+        msg = _('Assalomu alaykum! \nXush kelibsiz!')
         users = database['users']
         users[str(message.from_user.id)] = True
         database['users'] = users
@@ -31,12 +26,38 @@ async def command_start_handler(message: Message) -> None:
 
 @main_router.message(Command(commands='help'))
 async def help_command(message: Message) -> None:
-    await message.answer('''Buyruqlar:
+    await message.answer(_('''Buyruqlar:
 /start - Botni ishga tushirish
-/help - Yordam''')
+/help - Yordam'''))
 
 
-@main_router.message(F.text == '🔵 Biz ijtimoyi tarmoqlarda')
+@main_router.message(F.text == __('🌐 Tilni almshtirish'))
+async def change_language(message: Message) -> None:
+    ikb = InlineKeyboardBuilder()
+    ikb.row(InlineKeyboardButton(text='Uz🇺🇿', callback_data='lang_uz'),
+            InlineKeyboardButton(text='En🇬🇧', callback_data='lang_en'),
+            InlineKeyboardButton(text='Ko🇰🇷', callback_data="lang_ko"))
+    await message.answer(_('Tilni tanlang: '), reply_markup=ikb.as_markup(resize_keyboard=True))
+
+
+@main_router.callback_query(F.data.startswith('lang_'))
+async def languages(callback: CallbackQuery, state: FSMContext) -> None:
+    lang_code = callback.data.split('lang_')[-1]
+    await state.update_data(locale=lang_code)
+    if lang_code == 'uz':
+        lang = _('Uzbek', locale=lang_code)
+    elif lang_code == 'en':
+        lang = _('Ingiliz', locale=lang_code)
+    else:
+        lang = _('Kores', locale=lang_code)
+    await callback.answer(_('{lang} tili tanlandi', locale=lang_code).format(lang=lang))
+
+    rkb = main_keyboard_btn(locale=lang_code)
+    msg = _('Assalomu alaykum! Tanlang.', locale=lang_code)
+    await callback.message.answer(text=msg, reply_markup=rkb.as_markup(resize_keyboard=True))
+
+
+@main_router.message(F.text == __('🔵 Biz ijtimoyi tarmoqlarda)'))
 async def our_social_network(message: Message) -> None:
     ikb = InlineKeyboardBuilder()
     ikb.row(InlineKeyboardButton(text='IKAR | Factor Books', url='https://t.me/ikar_factor'))
@@ -45,25 +66,25 @@ async def our_social_network(message: Message) -> None:
     await message.answer('Biz ijtimoiy tarmoqlarda', reply_markup=ikb.as_markup())
 
 
-@main_router.message(F.text == '📚 Kitoblar')
+@main_router.message(F.text == __('📚 Kitoblar'))
 async def books(message: Message) -> None:
     ikb = show_categories(message.from_user.id)
-    await message.answer('Kategoriyalardan birini tanlang', reply_markup=ikb.as_markup())
+    await message.answer(_('Kategoriyalardan birini tanlang'), reply_markup=ikb.as_markup())
 
 
 @main_router.callback_query(F.data.startswith('orqaga'))
 async def back_handler(callback: CallbackQuery):
-    await callback.message.edit_text('Kategoriyalardan birini tanlang',
+    await callback.message.edit_text(_('Kategoriyalardan birini tanlang'),
                                      reply_markup=show_categories(callback.from_user.id).as_markup())
 
 
-@main_router.message(F.text == "📞 Biz bilan bog'lanish")
+@main_router.message(F.text == __("📞 Biz bilan bog'lanish"))
 async def message(message: Message) -> None:
-    text = f"""\n
+    text = _("""\n
 \n
 Telegram: @sarvar_py_dev\n
-📞  +{998994312269}\n
-🤖 Bot Davranbekov Sarvarbek (@sarvar_py_dev) tomonidan tayorlandi.\n"""
+📞  +{number}\n
+🤖 Bot Davranbekov Sarvarbek (@sarvar_py_dev) tomonidan tayorlandi.\n""".format(number=998994312269))
     await message.answer(text=text, parse_mode=ParseMode.HTML)
 
 
@@ -86,7 +107,7 @@ async def product_handler(callback: CallbackQuery):
         if str(callback.from_user.id) in database['basket']:
             ikb.add(InlineKeyboardButton(text=f'🛒 Savat ({len(database["basket"][str(callback.from_user.id)])})',
                                          callback_data='savat'))
-        ikb.add(InlineKeyboardButton(text="◀️ orqaga", callback_data='orqaga'))
+        ikb.add(InlineKeyboardButton(text=_("◀️ orqaga"), callback_data='orqaga'))
         ikb.adjust(2, repeat=True)
         await callback.message.edit_text(database['categories'][callback.data], reply_markup=ikb.as_markup())
     elif callback.data in database['products']:

@@ -1,4 +1,4 @@
-# English translations for PROJECT.
+# Korean translations for PROJECT.
 # Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
@@ -10,9 +10,9 @@ msgstr ""
 "POT-Creation-Date: 2024-05-10 11:38+0500\n"
 "PO-Revision-Date: 2024-05-09 18:41+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: en\n"
-"Language-Team: en <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ko\n"
+"Language-Team: ko <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,35 +20,35 @@ msgstr ""
 
 #: routers/basket.py:32 routers/handlers.py:72 routers/handlers.py:77
 msgid "Kategoriyalardan birini tanlang"
-msgstr "Choose one category"
+msgstr "하나의 카테고리를 선택하세요"
 
 #: routers/basket.py:72
 msgid "Eng kamida 1 ta kitob buyurtma qilishingiz mumkin! 😊"
-msgstr "You can order minimum 1 book 😊"
+msgstr "최소 1권부터 주문 가능해요😊"
 
 #: routers/basket.py:84
 msgid "❌ Savatni tozalash"
-msgstr "❌ Clear basket"
+msgstr "❌ 투명한 바구니"
 
 #: routers/basket.py:85
 msgid "✅ Buyurtmani tasdiqlash"
-msgstr "✅ Confirm order"
+msgstr "✅ 주문 확인"
 
 #: routers/basket.py:86 routers/handlers.py:110
 msgid "◀️ orqaga"
-msgstr "◀️ back"
+msgstr "◀️뒤로"
 
 #: routers/handlers.py:18 routers/handlers.py:56
 msgid "Assalomu alaykum! Tanlang."
-msgstr "Assalomu alaykum choose"
+msgstr "Assalomu alaykum 선택"
 
 #: routers/handlers.py:20
 msgid ""
 "Assalomu alaykum! \n"
 "Xush kelibsiz!"
 msgstr ""
-"Assalomu alaykum \n"
-"Welcome!"
+"Assalomu alaykum! \n"
+"환영!"
 
 #: routers/handlers.py:29
 msgid ""
@@ -56,25 +56,29 @@ msgid ""
 "/start - Botni ishga tushirish\n"
 "/help - Yordam"
 msgstr ""
-"Commands:\n"
-"/start - start bot\n"
-"/help - help"
+"명령:\n"
+"/start - 봇 시작\n"
+"/help - 돕다"
 
 #: routers/handlers.py:40
 msgid "Tilni tanlang: "
-msgstr "Choose language"
+msgstr "언어를 선택하세요"
 
 #: routers/handlers.py:48
 msgid "Uzbek"
-msgstr "Uzbek"
+msgstr "우즈벡어"
 
 #: routers/handlers.py:50
 msgid "Ingiliz"
-msgstr "English"
+msgstr "영어"
 
 #: routers/handlers.py:52
 msgid "Kores"
-msgstr "Korean"
+msgstr "한국인"
+
+#: routers/handlers.py:53
+msgid "{lang} tili tanlandi"
+msgstr "{lang} 언어가 선택되었습니다"
 
 #: routers/handlers.py:87
 msgid ""
@@ -96,83 +100,83 @@ msgstr ""
 "\n"
 "📞  +{number}\n"
 "\n"
-"🤖 Bot created by Davranbekov Sarvarbek (@sarvar_py_dev).\n"
+"🤖 Davranbekov Sarvarbek이 만든 봇 (@sarvar_py_dev).\n"
 
 #: routers/keyboard.py:21
 msgid "🔍 Qidirish"
-msgstr "🔍 Search"
+msgstr "🔍 검색"
 
 #: routers/keyboard.py:34
 msgid "◀️Orqaga"
-msgstr "◀️Back"
+msgstr "◀️뒤로"
 
 #: routers/keyboard.py:35
 msgid "🛒 Savatga qo'shish"
-msgstr "🛒 add to basket"
+msgstr "🛒 장바구니에 추가"
 
 #: routers/keyboard.py:41
 msgid "📚 Kitoblar"
-msgstr "📚 Books"
+msgstr "📚 책"
 
 #: routers/keyboard.py:42
 msgid "📃 Mening buyurtmalarim"
-msgstr "📃 My orders"
+msgstr "📃 내 주문"
 
 #: routers/keyboard.py:43
 msgid "🔵 Biz ijtimoyi tarmoqlarda"
-msgstr "🔵 We in social media"
+msgstr "🔵 우리는 소셜 미디어에 있습니다"
 
 #: routers/keyboard.py:44
 msgid "📞 Biz bilan bog'lanish"
-msgstr "📞 Connect with us"
+msgstr "📞 우리와 연결하세요"
 
 #: routers/keyboard.py:45
 msgid "🌐 Tilni almshtirish"
-msgstr "🌐 Change language"
+msgstr "🌐 언어 변경"
 
 #: routers/order.py:50
 msgid "📞 Telefon raqam"
-msgstr "📞 Phone number"
+msgstr "📞 전화번호"
 
 #: routers/order.py:52
 msgid "Telefon raqamingizni qoldiring (📞 Telefon raqam tugmasini bosing)🔽:"
-msgstr "📞 Click on phone number button 🔽"
+msgstr "📞 전화번호 버튼을 클릭하세요 🔽"
 
 #: routers/order.py:62 routers/order.py:91
 msgid "❌ Yo'q"
-msgstr "❌ No"
+msgstr "❌ 아니요"
 
 #: routers/order.py:63 routers/order.py:95
 msgid "✅ Ha"
-msgstr "✅ Yes"
+msgstr "✅ 예"
 
 #: routers/order.py:70
 msgid "❌ Bekor qilindi"
-msgstr "❌ Canceled"
+msgstr "❌ 취소됨"
 
 #: routers/order.py:72
 msgid "Asosiy menyu"
-msgstr "Main menu"
+msgstr "메인 메뉴"
 
 #: routers/order.py:104
 msgid ""
 "✅ Hurmatli mijoz! Buyurtmangiz uchun tashakkur.\n"
 "Buyurtma raqami: {orders_num}"
 msgstr ""
-"✅ Dear client! Thanks for ordering.\n"
-"Number of order: {orders_num}"
+"✅ 고객님 께! 주문해 주셔서 감사합니다.\n"
+"주문수: {orders_num}"
 
 #: routers/order.py:118
 msgid "<i>🎉 Sizning {order_num} raqamli buyurtmangizni admin qabul qildi.</i>"
-msgstr "<i>🎉 Your order number {order_num} admin has been accepted by admin.</i>"
+msgstr "<i>🎉 귀하의 주문 번호 {order_num} 관리자가 관리자에 의해 승인되었습니다.</i>"
 
 #: routers/order.py:130
 msgid "🤷‍♂️ Sizda hali buyurtmalar mavjud emas. Yoki bekor qilingan"
-msgstr "🤷‍♂️ You don\\'t have order or canceled"
+msgstr "🤷‍♂️ 주문이 없거나 취소되었습니다."
 
 #: routers/order.py:134
 msgid "❌ bekor qilish"
-msgstr "❌ cancel"
+msgstr "❌ 취소"
 
 #~ msgid "English language selected"
 #~ msgstr ""
@@ -190,17 +194,14 @@ msgstr "❌ cancel"
 #~ msgstr ""
 
 #~ msgid "Uzbek tili tanlandi"
-#~ msgstr "Uzbek language selected"
+#~ msgstr "우즈벡어 선택됨"
 
 #~ msgid "Kores tili tanlandi"
-#~ msgstr "Korean language selected"
+#~ msgstr "한국어 선택됨"
 
 #~ msgid "Botni boshlash"
-#~ msgstr "Start bot"
+#~ msgstr "봇 시작"
 
 #~ msgid "Yordam"
-#~ msgstr "help"
-
-msgid "{lang} tili tanlandi"
-msgstr "{lang} language selected"
+#~ msgstr "돕다"
 

@@ -5,9 +5,10 @@ from aiogram.fsm.state import StatesGroup, State
 from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, \
     KeyboardButton, Message
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram.utils.i18n import gettext as _, lazy_gettext as __
 
 from routers.cons import database
-from routers.keyboard import show_categories, make_plus_minus, main_keyboard
+from routers.keyboard import show_categories, make_plus_minus, main_keyboard_btn
 
 basket_router = Router()
 
@@ -28,7 +29,7 @@ def basket_msg(user_id):
 async def to_category(callback: CallbackQuery):
     quantity = 1
     await callback.message.delete()
-    await callback.message.answer('Kategoriyalardan birini tanlang',
+    await callback.message.answer(_('Kategoriyalardan birini tanlang'),
                                   reply_markup=show_categories(callback.from_user.id).as_markup())
 
 
@@ -68,7 +69,7 @@ async def change_plus(callback: CallbackQuery):
     if callback.data.startswith("change+"):
         quantity += 1
     elif quantity < 2:
-        await callback.answer('Eng kamida 1 ta kitob buyurtma qilishingiz mumkin! 😊', show_alert=True)
+        await callback.answer(_('Eng kamida 1 ta kitob buyurtma qilishingiz mumkin! 😊'), show_alert=True)
         return
     else:
         quantity -= 1
@@ -80,7 +81,7 @@ async def change_plus(callback: CallbackQuery):
 async def basket(callback: CallbackQuery):
     msg = basket_msg(callback.from_user.id)
     ikb = InlineKeyboardBuilder()
-    ikb.row(InlineKeyboardButton(text='❌ Savatni tozalash', callback_data='clear'))
-    ikb.row(InlineKeyboardButton(text='✅ Buyurtmani tasdiqlash', callback_data='confirm'))
-    ikb.row(InlineKeyboardButton(text='◀️ orqaga', callback_data='categoryga'))
+    ikb.row(InlineKeyboardButton(text=_('❌ Savatni tozalash'), callback_data='clear'))
+    ikb.row(InlineKeyboardButton(text=_('✅ Buyurtmani tasdiqlash'), callback_data='confirm'))
+    ikb.row(InlineKeyboardButton(text=_('◀️ orqaga'), callback_data='categoryga'))
     await callback.message.edit_text(msg, reply_markup=ikb.as_markup())
