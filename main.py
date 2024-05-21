@@ -5,9 +5,9 @@ import sys
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.types import BotCommand
+from aiogram.types import BotCommand, BotCommandScopeAllChatAdministrators, BotCommandScopeChat
 
-from routers.cons import TOKEN, database
+from routers.cons import TOKEN, database, ADMIN_LIST
 from aiogram.utils.i18n import I18n, FSMI18nMiddleware
 from aiogram.utils.i18n import gettext as _
 from routers import main_router, order_router, basket_router, inline_router, admin_router
@@ -16,15 +16,24 @@ dp = Dispatcher()
 
 
 async def on_startup(dispatcher: Dispatcher, bot: Bot):
-    if not (database.get('categories')):
-        database['categories'] = {}
-    if not database.get('products'):
-        database['products'] = {}
+    database['categories'] = database.get('categories', {})
+    database['products'] = database.get('products', {})
+    database['basket'] = database.get('basket', {})
+    database['orders'] = database.get('orders', {'order_num': 0})
+    database['users'] = database.get('users', {})
     command_list = [
-        BotCommand(command='start', description='Botni boshlash(봇 시작)'),
-        BotCommand(command='help', description='Yordam(돕다)'),
+        BotCommand(command='start', description='Botni boshlash'),
+        BotCommand(command='help', description='Yordam'),
     ]
     await bot.set_my_commands(command_list)
+
+    admin_commands = [
+        BotCommand(command='start', description='Botni boshlash'),
+        BotCommand(command='exel', description='exel orders'),
+    ]
+    scope = BotCommandScopeAllChatAdministrators()
+    for admin_id in ADMIN_LIST:
+        await bot.set_my_commands(admin_commands, BotCommandScopeChat(chat_id=admin_id))
 
 
 async def on_shutdown(dispatcher: Dispatcher, bot: Bot):

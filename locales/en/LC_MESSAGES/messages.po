@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-10 11:38+0500\n"
+"POT-Creation-Date: 2024-05-21 15:36+0500\n"
 "PO-Revision-Date: 2024-05-09 18:41+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: routers/basket.py:32 routers/handlers.py:72 routers/handlers.py:77
+#: routers/basket.py:32 routers/handlers.py:77 routers/handlers.py:82
 msgid "Kategoriyalardan birini tanlang"
 msgstr "Choose one category"
 
@@ -34,11 +34,11 @@ msgstr "❌ Clear basket"
 msgid "✅ Buyurtmani tasdiqlash"
 msgstr "✅ Confirm order"
 
-#: routers/basket.py:86 routers/handlers.py:110
+#: routers/basket.py:86 routers/handlers.py:115
 msgid "◀️ orqaga"
 msgstr "◀️ back"
 
-#: routers/handlers.py:18 routers/handlers.py:56
+#: routers/handlers.py:18 routers/handlers.py:60
 msgid "Assalomu alaykum! Tanlang."
 msgstr "Assalomu alaykum choose"
 
@@ -76,7 +76,19 @@ msgstr "English"
 msgid "Kores"
 msgstr "Korean"
 
-#: routers/handlers.py:87
+#: routers/handlers.py:53
+msgid "{lang} tili tanlandi"
+msgstr "{lang} language selected"
+
+#: routers/handlers.py:55
+msgid "Botni boshlash"
+msgstr "Start"
+
+#: routers/handlers.py:56
+msgid "Yordam kerakmi"
+msgstr "Do u need help?"
+
+#: routers/handlers.py:92
 msgid ""
 "\n"
 "\n"
@@ -138,11 +150,11 @@ msgstr "📞 Phone number"
 msgid "Telefon raqamingizni qoldiring (📞 Telefon raqam tugmasini bosing)🔽:"
 msgstr "📞 Click on phone number button 🔽"
 
-#: routers/order.py:62 routers/order.py:91
+#: routers/order.py:62 routers/order.py:93
 msgid "❌ Yo'q"
 msgstr "❌ No"
 
-#: routers/order.py:63 routers/order.py:95
+#: routers/order.py:63 routers/order.py:97
 msgid "✅ Ha"
 msgstr "✅ Yes"
 
@@ -154,7 +166,7 @@ msgstr "❌ Canceled"
 msgid "Asosiy menyu"
 msgstr "Main menu"
 
-#: routers/order.py:104
+#: routers/order.py:106
 msgid ""
 "✅ Hurmatli mijoz! Buyurtmangiz uchun tashakkur.\n"
 "Buyurtma raqami: {orders_num}"
@@ -162,15 +174,15 @@ msgstr ""
 "✅ Dear client! Thanks for ordering.\n"
 "Number of order: {orders_num}"
 
-#: routers/order.py:118
+#: routers/order.py:120
 msgid "<i>🎉 Sizning {order_num} raqamli buyurtmangizni admin qabul qildi.</i>"
 msgstr "<i>🎉 Your order number {order_num} admin has been accepted by admin.</i>"
 
-#: routers/order.py:130
+#: routers/order.py:132
 msgid "🤷‍♂️ Sizda hali buyurtmalar mavjud emas. Yoki bekor qilingan"
 msgstr "🤷‍♂️ You don\\'t have order or canceled"
 
-#: routers/order.py:134
+#: routers/order.py:136
 msgid "❌ bekor qilish"
 msgstr "❌ cancel"
 
@@ -200,7 +212,4 @@ msgstr "❌ cancel"
 
 #~ msgid "Yordam"
 #~ msgstr "help"
-
-msgid "{lang} tili tanlandi"
-msgstr "{lang} language selected"
 

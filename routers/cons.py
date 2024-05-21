@@ -5,6 +5,7 @@ from redis_dict import RedisDict
 
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_LIST = [6126220359, ]
+ADMIN_LIST = [int(os.getenv("ADMIN")), ]
 # host=os.getenv('REDIS_HOST'), port=os.getenv("REDIS_PORT")
 database = RedisDict('books')
+# , host=os.getenv('REDIS_HOST'), port=os.getenv("REDIS_PORT")

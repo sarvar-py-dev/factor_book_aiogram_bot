@@ -2,11 +2,12 @@ from uuid import uuid4
 
 from aiogram import F, Router
 from aiogram.enums import ChatType
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
-from aiogram.types import ReplyKeyboardRemove, Message, CallbackQuery, InlineKeyboardButton
+from aiogram.types import ReplyKeyboardRemove, Message, CallbackQuery, InlineKeyboardButton, FSInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+import pandas as pd
 
 from routers.cons import database, ADMIN_LIST
 import routers.keyboard as kb
@@ -14,7 +15,6 @@ from routers.filters import ChatTypeFilter
 from routers.keyboard import show_categories
 from routers.filters import IsAdmin
 from routers.utils import make_url
-
 
 save_product = {}
 
@@ -165,3 +165,27 @@ async def add_product(callback: CallbackQuery, state: FSMContext):
 @admin_router.message(CommandStart())
 async def start_for_admin(message: Message):
     await message.answer('Tanlang', reply_markup=kb.admin_panel_keyboard)
+
+
+@admin_router.message(Command(commands='exel'))
+async def exel(message: Message):
+    file_name = 'orders.xlsx'
+    rows = []
+    for phone_num, orders in database['orders'].items():
+        if isinstance(orders, dict):
+            for order_num, order_details in orders.items():
+                products = order_details.pop('products')
+                for product_id, product_info in products.items():
+                    row = {
+                        'phone_number': phone_num,
+                        'order_num': order_num,
+                        **order_details,
+                        'product_id': product_id,
+                        **product_info
+                    }
+                    rows.append(row)
+    df = pd.DataFrame(rows)
+    df.to_excel(file_name, index=False)
+
+    file = FSInputFile(file_name)
+    await message.answer_document(file, caption='Orders')

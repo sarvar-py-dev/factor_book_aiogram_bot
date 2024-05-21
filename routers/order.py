@@ -40,7 +40,7 @@ def clear_users_basket(user_id):
 
 @order_router.callback_query(F.data.startswith('clear'))
 async def clear(callback: CallbackQuery):
-    clear_users_basket(callback.user.id)
+    clear_users_basket(callback.from_user.id)
     await to_category(callback)
 
 
@@ -76,6 +76,8 @@ async def canceled_order(callback: CallbackQuery):
 async def confirm_order(callback: CallbackQuery, bot: Bot):
     await callback.message.delete()
     orders = database['orders']
+    if not orders.get('order_num'):
+        orders['order_num'] = 0
     orders['order_num'] += 1
     if not orders.get(str(callback.from_user.id)):
         orders[str(callback.from_user.id)] = {}
@@ -146,4 +148,3 @@ async def canceled_order(callback: CallbackQuery, bot: Bot):
     await bot.send_message(ADMIN_LIST[0],
                            f'{order_num} raqamli buyurtma bekor qilindi\n\nZakaz egasi {callback.from_user.mention_markdown(callback.from_user.full_name)}',
                            parse_mode=ParseMode.MARKDOWN_V2)
-

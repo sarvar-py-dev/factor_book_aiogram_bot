@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-10 11:38+0500\n"
+"POT-Creation-Date: 2024-05-21 15:36+0500\n"
 "PO-Revision-Date: 2024-05-09 18:41+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
-#: routers/basket.py:32 routers/handlers.py:72 routers/handlers.py:77
+#: routers/basket.py:32 routers/handlers.py:77 routers/handlers.py:82
 msgid "Kategoriyalardan birini tanlang"
 msgstr "하나의 카테고리를 선택하세요"
 
@@ -34,11 +34,11 @@ msgstr "❌ 투명한 바구니"
 msgid "✅ Buyurtmani tasdiqlash"
 msgstr "✅ 주문 확인"
 
-#: routers/basket.py:86 routers/handlers.py:110
+#: routers/basket.py:86 routers/handlers.py:115
 msgid "◀️ orqaga"
 msgstr "◀️뒤로"
 
-#: routers/handlers.py:18 routers/handlers.py:56
+#: routers/handlers.py:18 routers/handlers.py:60
 msgid "Assalomu alaykum! Tanlang."
 msgstr "Assalomu alaykum 선택"
 
@@ -80,7 +80,15 @@ msgstr "한국인"
 msgid "{lang} tili tanlandi"
 msgstr "{lang} 언어가 선택되었습니다"
 
-#: routers/handlers.py:87
+#: routers/handlers.py:55
+msgid "Botni boshlash"
+msgstr "봇 시작 시작"
+
+#: routers/handlers.py:56
+msgid "Yordam kerakmi"
+msgstr "도움이 필요해?"
+
+#: routers/handlers.py:92
 msgid ""
 "\n"
 "\n"
@@ -142,11 +150,11 @@ msgstr "📞 전화번호"
 msgid "Telefon raqamingizni qoldiring (📞 Telefon raqam tugmasini bosing)🔽:"
 msgstr "📞 전화번호 버튼을 클릭하세요 🔽"
 
-#: routers/order.py:62 routers/order.py:91
+#: routers/order.py:62 routers/order.py:93
 msgid "❌ Yo'q"
 msgstr "❌ 아니요"
 
-#: routers/order.py:63 routers/order.py:95
+#: routers/order.py:63 routers/order.py:97
 msgid "✅ Ha"
 msgstr "✅ 예"
 
@@ -158,7 +166,7 @@ msgstr "❌ 취소됨"
 msgid "Asosiy menyu"
 msgstr "메인 메뉴"
 
-#: routers/order.py:104
+#: routers/order.py:106
 msgid ""
 "✅ Hurmatli mijoz! Buyurtmangiz uchun tashakkur.\n"
 "Buyurtma raqami: {orders_num}"
@@ -166,15 +174,15 @@ msgstr ""
 "✅ 고객님 께! 주문해 주셔서 감사합니다.\n"
 "주문수: {orders_num}"
 
-#: routers/order.py:118
+#: routers/order.py:120
 msgid "<i>🎉 Sizning {order_num} raqamli buyurtmangizni admin qabul qildi.</i>"
 msgstr "<i>🎉 귀하의 주문 번호 {order_num} 관리자가 관리자에 의해 승인되었습니다.</i>"
 
-#: routers/order.py:130
+#: routers/order.py:132
 msgid "🤷‍♂️ Sizda hali buyurtmalar mavjud emas. Yoki bekor qilingan"
 msgstr "🤷‍♂️ 주문이 없거나 취소되었습니다."
 
-#: routers/order.py:134
+#: routers/order.py:136
 msgid "❌ bekor qilish"
 msgstr "❌ 취소"
 

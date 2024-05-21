@@ -1,8 +1,8 @@
-from aiogram import F, Router
+from aiogram import F, Router, Bot
 from aiogram.enums import ParseMode
 from aiogram.filters import Command, CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import InlineKeyboardButton, Message, CallbackQuery
+from aiogram.types import InlineKeyboardButton, Message, CallbackQuery, BotCommand
 from aiogram.utils.i18n import gettext as _, lazy_gettext as __
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
@@ -41,7 +41,7 @@ async def change_language(message: Message) -> None:
 
 
 @main_router.callback_query(F.data.startswith('lang_'))
-async def languages(callback: CallbackQuery, state: FSMContext) -> None:
+async def languages(callback: CallbackQuery, state: FSMContext, bot: Bot) -> None:
     lang_code = callback.data.split('lang_')[-1]
     await state.update_data(locale=lang_code)
     if lang_code == 'uz':
@@ -51,13 +51,18 @@ async def languages(callback: CallbackQuery, state: FSMContext) -> None:
     else:
         lang = _('Kores', locale=lang_code)
     await callback.answer(_('{lang} tili tanlandi', locale=lang_code).format(lang=lang))
-
+    command_list = [
+        BotCommand(command='start', description=_('Botni boshlash', locale=lang_code)),
+        BotCommand(command='help', description=_('Yordam kerakmi', locale=lang_code)),
+    ]
+    await bot.set_my_commands(command_list)
     rkb = main_keyboard_btn(locale=lang_code)
     msg = _('Assalomu alaykum! Tanlang.', locale=lang_code)
+    await callback.message.delete()
     await callback.message.answer(text=msg, reply_markup=rkb.as_markup(resize_keyboard=True))
 
 
-@main_router.message(F.text == __('🔵 Biz ijtimoyi tarmoqlarda)'))
+@main_router.message(F.text == __('🔵 Biz ijtimoyi tarmoqlarda'))
 async def our_social_network(message: Message) -> None:
     ikb = InlineKeyboardBuilder()
     ikb.row(InlineKeyboardButton(text='IKAR | Factor Books', url='https://t.me/ikar_factor'))

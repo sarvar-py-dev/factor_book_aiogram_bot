@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r req.txt  # <-- if u have requirements in cash
+RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r requirements.txt  # <-- if u have requirements in cash
 
 #RUN pip3 install -r requirements.txt
 
